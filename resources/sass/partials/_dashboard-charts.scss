@@ -1,0 +1,138 @@
+/*! _dashboard-charts.scss | Bulkit | CSS Ninja */
+
+/* ==========================================================================
+Dashboard core file 
+========================================================================== */
+
+/***
+TABLE OF CONTENTS
+=============================================================================
+0. Chart js
+1. Billboard JS
+2. Peity JS
+3. Demo styles
+=============================================================================
+***/
+
+/* ==========================================================================
+0. Chart js
+========================================================================== */
+
+//Presentation card with logo
+.logo-card {
+    min-height: 300px;
+    //logo
+    .lib-logo {
+        height: 100px;
+        background: $secondary;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        img {
+            height: 90px;
+            position: relative;
+            bottom: -55px;
+        }
+    }
+    //content
+    .logo-card-content {
+        text-align: center;
+        padding-top: 55px;
+        .lib-name {
+            font-size: 1.6rem;
+        }
+        .subname {
+            font-size: 95%;
+            color: $muted-grey;
+        }
+    }
+    //background icon
+    .filigrane {
+        position: absolute;
+        font-size: 150px;
+        color: $fade-grey;
+        opacity: 0.5;
+        right: -20px;
+        bottom: -90px;
+    }
+}
+
+.chart-container {
+    padding: 20px;
+    .button-wrap {
+        padding: 30px 0 20px 0;
+    }
+}
+
+#cjs-barChart, #cjs-lineChart, #cjs-pieChart, #cjs-radarChart, #cjs-polarChart, #cjs-doughnutChart, #cjs-hbarChart, #cjs-gbarChart, #cjs-mixedChart, #cjs-bubbleChart {
+    height: 260px;
+    max-height: 260px;
+}
+
+/* ==========================================================================
+1. Billboard JS
+========================================================================== */
+
+.bb-axis {
+    fill: $muted-grey;
+
+}
+
+/* ==========================================================================
+2. Peity JS
+========================================================================== */
+
+
+//Cards with Peity charts
+.peity-card {
+    min-height: 300px;
+    background-image: url(../images/bg/dashboard/chart-bg.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    .column {
+        min-height: 280px;
+    }
+    .peity-chart {
+        min-height: 140px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &.is-full {
+            min-height: 100% !important;
+        }
+    }
+}
+
+/* ==========================================================================
+3. Demo styles
+========================================================================== */
+
+#doughnutChart {
+    max-height: 150px;
+    max-width:150px;
+    margin: 0 auto;
+}
+
+//Vmap jquery
+#vmap {
+    min-width: 400px;
+    min-height: 400px;
+    width: 100%;
+    height: 100%;
+}
+
+.jqvmap-zoomin, .jqvmap-zoomout {
+    position: absolute;
+    left: 10px;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    border-radius: 50% !important;
+    background: $primary !important;
+    padding: 0 !important;
+    color: $white;
+    width: 15px !important;
+    height: 15px !important;
+    cursor: pointer;
+    line-height: 13px !important;
+    text-align: center;
+}

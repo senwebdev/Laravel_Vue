@@ -1,0 +1,6 @@
+# Role type
+type Role {
+    id: ID!
+    name: String!
+    display_name: String!
+}

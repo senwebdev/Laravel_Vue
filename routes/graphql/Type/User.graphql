@@ -1,0 +1,13 @@
+# User type
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    password: String!
+    email_verified_at: String
+    role: Role!
+    permissions: [Permission]! @hasMany
+    tickets: [Ticket!]! @hasMany
+    created_at: DateTime!
+    updated_at: DateTime!
+}

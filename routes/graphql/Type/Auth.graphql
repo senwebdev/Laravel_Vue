@@ -1,0 +1,11 @@
+type Token {
+    token_type: String!
+    expires_in: Int!
+    access_token: String!
+    refresh_token: String!
+}
+
+type LoginPayload {
+    auth_token: Token
+    user: User
+}

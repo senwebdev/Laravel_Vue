@@ -1,0 +1,785 @@
+/*! _dashboard-sidebar.scss | Bulkit | CSS Ninja */
+
+/* ==========================================================================
+Dashboard sidebar styles
+========================================================================== */
+
+/***
+TABLE OF CONTENTS
+=============================================================================
+0. Left Sidebar
+1. Menu items
+2. Sidebar profile
+=============================================================================
+***/
+
+/* ==========================================================================
+0. Left Sidebar
+========================================================================== */
+
+//Main dashboard menu
+.main-menu {
+    background: $white;
+    border-right:1px solid #e5e5e5;
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    width:80px;
+    overflow:visible;
+    -webkit-transition:width .05s linear;
+    transition: width .05s linear;
+    transition: transform 0.3s;
+    z-index:1000;
+    //inner
+    .main-menu-inner {
+        height: 100%;position: relative;
+        ul {
+            margin:7px 0;
+        }
+        //menu item
+        ul li {
+            height: 65px;
+            position:relative;
+            display:block;
+            width:100%;
+            a {
+                position:relative;
+                display:table;
+                border-collapse:collapse;
+                border-spacing:0;
+                color:#999;
+                font-family: arial;
+                font-size: 14px;
+                text-decoration:none;
+                -webkit-transition:all .1s linear;
+                transition:all .1s linear;
+            }
+        }
+        //side menu icon
+        .side-icon  {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            i {
+                position: relative;
+                font-size: 1.5rem;
+                color: $title-grey;
+            }
+            &.is-active {
+                i {
+                    color: $secondary; 
+                }
+            }
+            &:hover i {
+                color: $secondary; 
+            }
+        }
+        //Sidebar logo
+        .main-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                width: 32px;
+                height: 32px;
+                margin-top: -5px;
+                transition: opacity .3s;
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+        }
+        //bottom profile avatar
+        .profile {
+            position:absolute;
+            left:0;
+            bottom:0;
+            width: 100%;
+            li {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+            }
+            a {
+                position: relative;
+                z-index: 4;
+            }
+            //avatar
+            .main-menu-avatar {
+                width: 48px;
+                height: 48px;
+                border-radius: 100px;
+                margin: 0 auto;
+                margin-bottom: 20px;
+                transform: scale(1);
+                transition: transform .4s;
+                //Scale out state
+                &.vanish {
+                    transform: scale(0);
+                }
+            }
+            //Status indicator
+            .dot {
+                position: absolute;
+                top: 1px;
+                right: 0;
+                width: 12px;
+                height: 12px;
+                border-radius: 100px;
+                background: $primary;
+                transform: scale(1);
+                transition: transform .4s;
+                //Scale out state
+                &.vanish {
+                    transform: scale(0);
+                }
+                //Busy status color
+                &.is-busy {
+                    background: $orange;
+                }
+            }
+        }
+    }
+    //Dark version of sidebar
+    &.is-dark {
+        background: $sidebar;
+        border-right:1px solid $sidebar;
+        ul li a {
+            color: $white;
+        }
+        .side-icon i {
+            color: $white;
+        }
+        .side-icon.is-active i, .side-icon:hover i {
+            color: $primary;
+        }
+    }
+}
+
+
+/* ==========================================================================
+1. Menu items
+========================================================================== */
+
+//Child menu (slides when a main menu item is clicked)
+.child-menu {
+    background:$secondary;
+    border-right:1px solid #e5e5e5;
+    position:fixed;
+    top:0;
+    bottom:0;
+    transform: translateX(-251px);
+    left:80px;
+    width:250px;
+    overflow:hidden;
+    -webkit-transition:all .3s;
+    transition:all .3s;
+    z-index:999;
+    .child-menu-inner {
+        height: 100%;
+        ul li {
+            min-height: 65px;
+        }
+    }
+    //Menu header
+    .child-header {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        border-bottom: 1px solid ligthen($secondary, 15%);
+        .cross-container {
+            margin-right: 15px;
+            transform: scale(1.1);
+        }
+    }
+    //Menu title
+    .sidebar-title {
+        margin-right: auto;
+        padding-left: 20px;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        font-weight: 300;
+        color: $smoke-white;
+        letter-spacing: 3px;
+    }
+    //Menu list
+    ul.sidebar-menu {
+        margin: 0;
+        padding: 7px 0;
+        max-width: 400px;
+        list-style: none;
+        list-style-type: none;
+        display: none;
+        &.is-active {
+            display: block;
+        }
+    }
+    //Menu items
+    .sidebar-menu li a span {
+        margin-right: 20px;
+        color: #fff;
+    }
+    .sidebar-menu li a  {
+        padding: 20px 25px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        text-decoration: none;
+        color: #fff;
+    }
+    .sidebar-menu li a:hover  {
+        background-color: darken($secondary, 5%);
+        padding: 20px 25px;
+        text-decoration: none;
+        color: #fff;
+    }
+    //Menu items with submenu items
+    li.have-children.active {
+        background-color: darken($secondary, 5%);
+    }
+    li.have-children ul {
+        padding: 0;
+        background-color: darken($secondary, 10%);
+    } 
+    li.have-children ul li {
+        min-height: 10px !important;
+    }
+    li.have-children ul li a {
+        background-color: darken($secondary, 20%);
+        padding: 12px 25px 12px 62px;
+        span {
+            margin-left: auto;
+            margin-right: 10px;
+        }
+        span:after {
+            content: '';
+        }
+    } 
+    li.have-children ul li a:hover, li.have-children ul li.is-active a {
+        color: #fff;
+        background-color: darken($secondary, 25%);
+        padding: 12px 25px 12px 62px;
+    } 
+    li.have-children, li {
+        position: relative;
+    }
+    .have-children span::after {
+        position: absolute;
+        top: 21px;
+        right: 30px;
+        content: "\E409";
+        color: $white;
+        transition: all .5s;
+    }
+    li.active.have-children span::after {
+        -moz-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+    .sidebar-menu .have-children > ul {
+        display: none;
+    }
+}
+
+//Sidebar active state
+.is-sidebar-translated {
+    transform: translateX(0);
+}
+
+/* ==========================================================================
+2. Sidebar profile
+========================================================================== */
+
+//FAB inside profile image
+.fab {
+    width: 48px;
+    height: 48px;
+    background-color: transparent;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 22px;
+    left: 14px;
+    cursor: pointer;
+    //active state
+    &.is-active {
+        .hamburger {
+            background-color: transparent;
+            transform: translateX(-50%) translateY(-50%) rotate(180deg);
+            &:before {
+                transform: translateY(0) rotate(45deg);
+                background-color: #fff;
+            }
+            &:after {
+                transform: translateY(0) rotate(-45deg);
+                background-color: #fff;
+            } 
+        }
+        .fab__ripple {
+            transform: scale(1);
+            -webkit-transform: scale(1);
+            background-color: $secondary;  
+        }
+        .profile-container {
+            transform: scale(1);
+            -webkit-transform: scale(1);
+        }
+    }
+}
+//Ripple effect
+.fab__ripple {
+    width: 450vw;
+    height: 450vw;
+    margin-top: -225vw;
+    margin-left: -225vw;
+    background-color: $secondary;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    z-index: 1;
+    //backface-visibility: hidden;
+    transform: scale(0.001) translateZ(0);
+    -webkit-transform: scale(0.001) translateZ(0);
+    transition: transform, opacity, visibility;
+    transition: transform, opacity, visibility;
+    -webkit-transition-duration: 0.7s, 0.3s, 0s;
+    transition-delay: 0, 0.5s, 0;
+    -webkit-transition-delay: 0, 0.5s, 0;
+    transition-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+    -webkit-transition-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+    pointer-events: none;
+}
+//Hamburger menu
+.hamburger {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    right: auto;
+    transform: translateX(-50%) translateY(-50%) rotate(0deg);
+    display: inline-block;
+    width: 18px;
+    height: 2px;
+    background-color: $white;
+    z-index: 10;
+    transition: 0.3s all cubic-bezier(0.77, 0, 0.175, 1);
+    &:before,
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $white;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        transition: transform 0.3s;
+    }
+    &:before {
+        transform: translateY(-6px) rotate(0deg);
+    }
+    &:after {
+        transform: translateY(6px) rotate(0deg);
+    }
+}
+
+//User profile
+.profile-container {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    transition: transform .5s;
+    -webkit-transition: transform .5s;
+    transition-delay: .7s;
+    -webkit-transition-delay: .7s;
+    transform: scale(0);
+    -webkit-transform: scale(0);
+    //inner section
+    .inner {
+        position: relative;
+        height: 100%;
+        background: $white;
+        margin-left: 80px;
+        padding: 10px 0;
+        overflow: auto;
+        overflow-x: hidden;
+        cursor: default;
+        &::-webkit-scrollbar {
+            width: 10px;
+        }
+        &::-webkit-scrollbar-thumb {
+            border-radius: 5px;
+            background: rgba(0,0,0,0.2)
+        }
+    }
+    //container
+    .container.is-fluid {
+        margin: 0;
+    }
+    //cover image
+    #profile-cover {
+        position: relative;
+        background-image: url(https://via.placeholder.com/1920x1280);
+        background-size: cover;
+        background-repeat: no-repeat;
+        .heading-wrapper {
+            position: relative !important;
+            z-index: 5 !important;
+        }
+    }
+    //cover image overlay
+    .cover-overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: rgba(0,0,0,0.5);
+    }
+    //Profile header
+    .profile-heading {
+        margin: 20px 20px;
+        padding: 20px;
+        //meta
+        .name {
+            margin:-30px 0;
+            padding: 40px 30px 0 30px;
+            color: $white;
+        }
+        .followers, .following {
+            margin:-30px 0;
+            padding: 70px 30px;
+            color: $white;
+        }
+        .likes {
+            margin:-30px 0;
+            padding: 70px 30px;
+            color: $white;
+        }
+        .stat-key {
+            font-size: 20px;
+            font-weight: 400;
+            color: $white;
+        }
+        .stat-val {
+            font-size: 35px;
+            font-weight: bold;
+            color: $white;
+        }
+        //avatar
+        .avatar {
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            img {
+                height: 128px;
+                width: 128px;
+                border-radius: 200px;
+                margin: 0 auto;
+            }
+            //avatar overlay with icon on hover
+            .avatar-overlay {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 128px;
+                width: 128px;
+                margin: 0;
+                border-radius: 200px;
+                opacity: 0;
+                transition: opacity 0.4s;
+                background: rgba(0,0,0,0.6);
+                i {
+                    color: $smoke-white;
+                    transform: translateY(60px);
+                    transition: transform 0.2s;
+                }
+            }
+            //active overlay state
+            &:hover .avatar-overlay {
+                opacity: 1;
+                i {
+                    transform: translateY(0);
+                }
+            }
+        }
+        //profile title
+        .title.is-bold {
+            font-weight: 600;
+            color: $white;
+        }
+        //tagline
+        .tagline {
+            padding: 10px 0 10px 0;
+            font-size: 16px;
+            line-height: 1.4;
+        }
+    }
+    //Profile sections wrapper
+    .profile-sections-wrapper {
+        #profile-view, #edit-view, #profile-notifications, #profile-team  {
+            .flex-card.is-top {
+                margin-top: -50px;
+                z-index: 99;
+            }
+        }
+        //profile section
+        #profile-view {
+            .edit-button {
+                padding: 10px;
+            }
+            .info-section {
+                margin-bottom: 40px;
+            }
+            .info-heading {
+                font-size: 0.9rem;
+                letter-spacing: 0.08em;
+                font-weight: 300;
+                color: $title-grey;
+                text-shadow: 0 1px 1px $white;
+                text-transform: uppercase;
+            }
+            .info-divider {
+                border-bottom: 1px solid $fade-grey;
+                background-color: $fade-grey;
+                height: 1px;
+                margin: 0.5em 0px 1.5em;
+                span {
+                    display: block;
+                    width: 50px;
+                    height: 1px;
+                    background-color: $fade-grey;
+                }
+            }
+            .info-item {
+                margin-bottom: 15px;
+                .info-title {
+                    font-weight: 500;
+                    color: $blue-grey;
+                    i {
+                        font-size: 1.3rem;
+                        color: $muted-grey;
+                    }
+                }
+                .info-description {
+                    color: $basaltic-grey;
+                    &.highlighted {
+                        color: $blue;
+                    }
+                }
+                .taglist {
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    span {
+                        margin: 3px;
+                    }
+                }
+            }
+        }
+        //Edit profile form
+        #edit-view {
+            .cross-container {
+                margin: 15px;
+                position: absolute;
+                top: 4px;
+                span {
+                    background: $title-grey;
+                }
+            }
+            h3 {
+                color: $blue-grey;
+                font-weight: 400;
+                padding-top: 10px;
+            }
+        }
+        //Notifications section
+        #profile-notifications {
+            //Notifications list
+            .notifications-center {
+                //list item
+                li {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    cursor: pointer;
+                    padding: 15px 0;
+                    border-bottom: 1px solid $fade-grey;
+                    &:hover .controls span {
+                        transform: translateX(0);
+                    }
+                    //old notification style
+                    &.is-old {
+                        opacity: 0.4;
+                        .controls span {
+                            color: $basaltic-grey;
+                            border: 2px dashed $basaltic-grey;
+                            &:hover {
+                                border: 2px solid $blue;
+                                color: $blue;
+                            }
+                        }
+                    }
+                }
+                //side icon
+                .icon  {
+                    display: inline-block;
+                    font-size: 2.6rem;
+                    height: 2.6rem;
+                    line-height: 2.6rem;
+                    text-align: center;
+                    vertical-align: middle;
+                    width: 2.6rem;
+                    margin-right: 25px;
+                    color: $accent;
+                    img {
+                        border-radius: 50%;
+                        max-width: 100%;
+                        max-height: 100%;
+                    }
+                }
+                //description
+                .description {
+                    margin-right: 10px;
+                    .timestamp {
+                        font-size: 88%;
+                        color: $muted-grey;
+                    }
+                }
+                //actions
+                .controls {
+                    display: inherit;
+                    margin-left: auto;
+                    span {
+                        display: inline-block;
+                        font-size: 1.4rem;
+                        height: 3.5rem;
+                        line-height: 3.5rem;
+                        text-align: center;
+                        vertical-align: middle;
+                        width: 3.5rem;
+                        margin-left: 10px;
+                        color: $fade-grey;
+                        border: 2px dashed $fade-grey;
+                        border-radius: 50%;
+                        cursor: pointer;
+                        transition: all 0.2s;
+                        transform: translateX(150px);
+                        &:hover {
+                            border: 2px solid $blue;
+                            color: $blue;
+                        }
+                    }
+                }
+            }
+        }
+        //Team section
+        #profile-team {
+            //team logo
+            .team-logo {
+                text-align: center;
+                img {
+                    width: 50%;
+                }
+            }
+            //number of members
+            .team-number {
+                margin-bottom: 10px;
+                color: $muted-grey;
+                text-transform: uppercase;
+                span {
+                    font-size: 2rem;
+                    font-weight: bolder;
+                    padding-right: 10px;
+                    color: $secondary;
+                }
+            }
+            //avatars list
+            .team-avatars {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                img {
+                    width: 36px;
+                    height: 36px;
+                    border-radius: 50%;
+                    border: 2px solid $white;
+                    position: relative;
+                }
+                span {
+                    margin-left: 10px;
+                    font-size: 1.2rem;
+                    font-weight: bolder;
+                    color: $secondary;
+                }
+            }
+            //Team member card
+            .team-card {
+                //avatar
+                .avatar {
+                    width: 100%;
+                    height: 80px;
+                    text-align: center;
+                    img {
+                        max-height: 100%;
+                        max-width: 100%;
+                        border-radius: 50%;
+                    }
+                }
+                //card body
+                .card-body {
+                    padding: 10px 0 20px 0;
+                }
+                //meta
+                .user-id {
+                    text-align: center;
+                    margin-top: 15px;
+                    .name {
+                        font-size: 1.1rem;
+                        font-weight: 600;
+                        color: $blue-grey;
+                    }
+                    .position {
+                        font-size: 95%;
+                        color: $muted-grey;
+                        padding-bottom: 5px;
+                    }
+                    .location {
+                        font-size: 85%;
+                        color: $accent;
+                    }
+                }
+                //description
+                .user-description {
+                    text-align: center;
+                    padding: 20px 20px;
+                    font-size: 85%;
+                    color: $title-grey;
+                }
+                a {
+                    display: block;
+                }
+                .card-action {
+                    padding: 0 20%;
+                }
+                //box shadow on hover
+                &:hover {
+                    box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
+                    transform: scale(1.01);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,1200 @@
+/*! _dashboard-widgest.scss | Bulkit | CSS Ninja */
+
+/* ==========================================================================
+Dashboard utilities
+========================================================================== */
+
+/***
+TABLE OF CONTENTS
+=============================================================================
+0. Data widgets
+1. Social Widgets
+=============================================================================
+***/
+
+/* ==========================================================================
+0. Data widgets
+========================================================================== */
+
+//Ticket status list
+.ticket-list {
+    margin: 0 !important;
+    padding: 0 0 10px 0;
+
+    li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0 10px 0;
+        margin: 0 5px;
+        border-bottom: 1px solid $fade-grey;
+    }
+
+    .ticket-data {
+        .ticket-info {
+            margin-bottom: 5px;
+
+            .ticket-id {
+                font-weight: 600;
+                color: $title-grey;
+            }
+
+            .ticket-title {
+                color: $blue-grey;
+                font-weight: 500;
+            }
+        }
+
+        .ticket-timestamp {
+            font-size: 80%;
+            color: $muted-grey;
+            padding-left: 35px;
+        }
+    }
+
+    .ticket-meta {
+        font-size: 85%;
+        color: $muted-grey;
+        position: relative;
+        padding-left: 35px;
+
+        .small-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: inline-block;
+            position: absolute;
+            left: 0;
+        }
+    }
+}
+
+//Available for hire table
+.hire-table {
+    overflow: auto !important;
+
+    img {
+        display: block;
+        min-width: 34px !important;
+        height: 34px;
+        border-radius: 50%;
+    }
+
+    th {
+        font-weight: 500 !important;
+        background: lighten($fade-grey, 5%);
+    }
+
+    td {
+        padding: .75em !important;
+        vertical-align: middle !important;
+
+        &.position {
+            font-size: 95%;
+            color: $muted-grey;
+        }
+
+        &.experience {
+            font-weight: 600;
+
+            span {
+                font-weight: 500;
+                font-size: 85%;
+            }
+        }
+    }
+
+    a {
+        color: $blue-grey;
+        font-weight: 500;
+    }
+}
+
+//Projects overview table
+.project-table {
+    overflow: auto !important;
+
+    th {
+        font-weight: 500 !important;
+        background: lighten($fade-grey, 5%);
+    }
+
+    td {
+        vertical-align: middle !important;
+
+        &.deadline {
+            font-size: 90%;
+            color: $muted-grey;
+        }
+
+        .percent {
+            position: relative;
+            top: -8px;
+            font-weight: 700;
+            color: $blue-grey;
+
+            span {
+                font-size: 80%;
+            }
+        }
+    }
+
+    a {
+        color: $blue-grey;
+        font-weight: 500;
+
+        &:hover {
+            color: $secondary;
+        }
+    }
+
+    b {
+        font-weight: 500 !important;
+        font-size: 94%;
+        color: $muted-grey;
+    }
+
+    svg {
+        max-width: 32px !important;
+        margin: 0 auto !important;
+    }
+
+    .material-icons {
+        position: relative;
+        top: 3px;
+        color: $title-grey;
+        cursor: pointer;
+    }
+}
+
+//Circle progress chart
+.circle-chart-circle {
+    animation: circle-chart-fill 2s reverse;
+    transform: rotate(-90deg);
+    transform-origin: center;
+}
+
+.stat-number {
+    position: absolute;
+    top: 30%;
+    left: 6px;
+    width: 100%;
+    font-weight: 700;
+    font-size: 2.6rem;
+
+    span {
+        font-size: 60%;
+        margin: 0 auto;
+    }
+}
+
+.chart-avatar {
+    position: absolute;
+    top: 30%;
+    left: 0;
+    width: 100%;
+    height: 40px;
+
+    img {
+        position: relative;
+        width: 60px;
+        height: 60px;;
+        border-radius: 50%;
+    }
+}
+
+.ring-title span {
+    font-size: 1.2rem;
+    color: $title-grey;
+}
+
+//circle chart animation
+@keyframes circle-chart-fill {
+    to {
+        stroke-dasharray: 0 100;
+    }
+}
+
+//Income widget
+.stat-text {
+    .stat-average {
+        position: relative;
+        width: 100%;
+        font-weight: 700;
+        font-size: 1.8rem;
+
+        span:first-child {
+            font-size: 1.2rem;
+        }
+    }
+
+    .stat-subtitle {
+        font-size: 90%;
+        color: $muted-grey;
+    }
+}
+
+//Best managers widget
+.avatar-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .avatar-chart {
+        position: relative;
+
+        img {
+            display: block;
+            width: 70px;
+            height: 70px;
+            border: 4px solid $white-smoke;
+            border-radius: 50%;
+        }
+
+        svg {
+            position: absolute;
+            top: 18px;
+            left: 40px;
+        }
+
+        &.is-left {
+            svg {
+                left: -40px;
+            }
+        }
+    }
+}
+
+//Shipping widget
+.shipping-widget {
+    .shipping-progress {
+        position: relative;
+        padding: 10px 20px;
+
+        .shipping-icon {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            position: absolute;
+            top: 42px;
+            left: 52px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            i {
+                font-size: 40px;
+                color: $placeholder;
+            }
+        }
+    }
+
+    .shipping-info {
+        .delivery-percent {
+            font-size: 2rem;
+            font-weight: 700;
+            color: $blue-grey;
+
+            span {
+                font-size: 60%;
+                color: inherit;
+            }
+        }
+
+        .delivery-text {
+            font-weight: 500;
+            color: $muted-grey;
+        }
+    }
+
+    .bg-icon {
+        font-size: 5rem;
+        position: absolute;
+        right: 0;
+        color: $fade-grey;
+        opacity: 0.4;
+        transform: scale(3);
+    }
+}
+
+//Server widget
+.server-widget {
+    .server-progress {
+        position: relative;
+        padding: 10px 20px;
+
+        .server-icon {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            position: absolute;
+            top: 40px;
+            left: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            i {
+                font-size: 40px;
+                color: $placeholder;
+            }
+        }
+    }
+
+    .server-info {
+        .server-percent {
+            font-size: 2rem;
+            font-weight: 700;
+            color: $blue-grey;
+
+            span {
+                font-size: 60%;
+                color: inherit;
+            }
+        }
+
+        .server-text {
+            font-weight: 500;
+            color: $muted-grey;
+        }
+    }
+
+    .bg-icon {
+        font-size: 4rem;
+        position: absolute;
+        top: 50%;
+        right: 6%;
+        color: $fade-grey;
+        opacity: 0.4;
+        transform: scale(3);
+    }
+}
+
+//Pills widget
+.pills-widget {
+    .tabs {
+        margin-bottom: 0 !important;
+    }
+
+    //messages
+    .messages-list {
+        margin: 0 !important;
+        padding: 0 0 10px 0;
+
+        li {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 10px 0 10px 0;
+            margin: 0 5px;
+            border-bottom: 1px solid $fade-grey;
+        }
+
+        .message-data {
+            .message-info {
+                margin-bottom: 5px;
+
+                .message-title {
+                    color: $blue-grey;
+                    font-weight: 500;
+                }
+            }
+
+            .message-timestamp {
+                font-size: 80%;
+                color: $muted-grey;
+                padding-left: 35px;
+            }
+        }
+
+        .message-meta {
+            font-size: 85%;
+            color: $muted-grey;
+            position: relative;
+            padding-left: 35px;
+
+            span {
+                font-weight: 500;
+                color: $secondary;
+            }
+
+            .small-avatar {
+                width: 28px;
+                height: 28px;
+                border-radius: 50%;
+                display: inline-block;
+                position: absolute;
+                left: 0;
+            }
+        }
+
+        .message-action {
+            margin-left: auto;
+
+            .attachments {
+                position: relative;
+                margin-right: 8px;
+                color: $title-grey;
+            }
+        }
+
+        button {
+            position: relative;
+            top: 10px;
+            margin-left: 10px;
+        }
+    }
+
+    //tasks
+    .task-list {
+        margin: 0 !important;
+        padding: 0 0 10px 0;
+
+        li {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 10px 0 10px 0;
+            margin: 0 5px;
+            border-bottom: 1px solid $fade-grey;
+        }
+
+        .task-data {
+            .task-info {
+                margin-bottom: 5px;
+
+                .task-title {
+                    color: $blue-grey;
+                    font-weight: 500;
+                }
+            }
+
+            .task-timestamp {
+                font-size: 80%;
+                color: $muted-grey;
+                padding-left: 35px;
+            }
+        }
+
+        .task-meta {
+            font-size: 85%;
+            color: $muted-grey;
+            position: relative;
+            padding-left: 35px;
+
+            span {
+                font-weight: 500;
+                color: $secondary;
+            }
+
+            .small-avatar {
+                width: 28px;
+                height: 28px;
+                border-radius: 50%;
+                display: inline-block;
+                position: absolute;
+                left: 0;
+            }
+        }
+
+        .task-action {
+            margin-left: auto;
+            margin-right: 8px;
+
+            .users {
+                position: relative;
+                color: $title-grey;
+            }
+        }
+
+        button {
+            position: relative;
+            top: 10px;
+            margin-left: 10px;
+
+            &.complete {
+                transform: scale(0.8) !important;
+            }
+        }
+    }
+
+    //invoices
+    .invoices-list {
+        margin: 0 !important;
+        padding: 0 0 10px 0;
+
+        li {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 10px 0 10px 0;
+            margin: 0 5px;
+            border-bottom: 1px solid $fade-grey;
+        }
+
+        .invoice-data {
+            .invoice-info {
+                margin-bottom: 5px;
+
+                .invoice-title {
+                    color: $blue-grey;
+                    font-weight: 500;
+                }
+            }
+
+            .invoice-timestamp {
+                font-size: 80%;
+                color: $muted-grey;
+                padding-left: 40px;
+            }
+        }
+
+        .invoice-meta {
+            font-size: 85%;
+            color: $muted-grey;
+            position: relative;
+            padding-left: 40px;
+
+            span {
+                font-weight: 600;
+                color: $secondary;
+                font-size: .9rem;
+            }
+
+            i {
+                font-size: 32px;
+                display: inline-block;
+                position: absolute;
+                left: 0;
+                top: -6px;
+            }
+        }
+
+        .invoice-action {
+            margin-left: auto;
+
+            .attachments {
+                position: relative;
+                margin-right: 8px;
+                color: $title-grey;
+            }
+        }
+
+        button {
+            position: relative;
+            top: 10px;
+            margin-left: 10px;
+        }
+    }
+}
+
+//complete task button wrapper inside pills widget
+.complete-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    .complete-overlay {
+        position: absolute;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        top: -36px;
+        left: -24px;
+        background: $primary;
+        transform: scale(0);
+        transition: transform 0.4s;
+        z-index: 0;
+    }
+}
+
+//button
+.complete {
+    background: $title-grey !important;
+    transform: rotate(0deg) !important;
+    box-shadow: 0 3px 10px 4px rgba(0, 0, 0, 0.04);
+
+    //uncompleted state
+    i.uncompleted {
+        display: block;
+        color: $white;
+        position: relative;
+        z-index: 1;
+    }
+
+    i.completed {
+        display: none;
+        color: $white;
+        position: relative;
+        z-index: 1;
+    }
+
+    //completed state (active state)
+    &.is-active {
+        .complete-overlay {
+            transform: scale(1);
+        }
+
+        i.uncompleted {
+            display: none;
+        }
+
+        i.completed {
+            display: block;
+        }
+    }
+}
+
+//Activity feed
+.simple-feed {
+    margin-left: 0.5rem !important;
+    margin-right: 0.5rem !important;
+    padding-top: 2rem;
+
+    //item
+    .feed-item {
+        margin-top: 0 !important;
+        padding-left: 15px;
+        padding-bottom: 20px;
+
+        i {
+            position: relative;
+            top: -12px;
+        }
+
+        &:after {
+            border: 2px solid $primary;
+        }
+
+        a {
+            color: $secondary;
+        }
+
+        .text {
+            color: $basaltic-grey;
+        }
+    }
+}
+
+/* ==========================================================================
+1. Social Widgets
+========================================================================== */
+
+//Follow card
+.follow-card {
+    .header {
+        position: relative;
+        width: 100%;
+        max-height: 100px;
+
+        .cover {
+            width: 100%;
+        }
+
+        .avatar {
+            position: absolute;
+            left: 20px;
+            bottom: -45px;
+            border-radius: 50%;
+            border: 5px solid white;
+            height: 90px;
+            width: 90px;
+        }
+
+        span {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-weight: 700;
+            color: $white;
+
+            span {
+                font-size: 90%;
+                font-weight: 500;
+                right: 0;
+            }
+        }
+    }
+
+    button {
+        margin: 20px;
+    }
+
+    &.is-minimal {
+        .header {
+            background: $blue;
+            height: 100px;
+        }
+
+        .twitter-icon {
+            position: absolute;
+            background: $blue;
+            left: 20px;
+            bottom: -45px;
+            border-radius: 50%;
+            border: 5px solid white;
+            height: 90px;
+            width: 90px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            i {
+                color: $white;
+                font-size: 40px;
+            }
+        }
+    }
+}
+
+//Stats card
+.stats-card {
+    .img-header {
+        min-height: 220px;
+        width: 100%;
+        background: $primary;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .img-block {
+            img {
+                max-height: 100px;
+                border-radius: 50%;
+            }
+
+            .name {
+                font-size: 1.4rem;
+                color: $white;
+                font-weight: 500;
+            }
+
+            .name-details {
+                color: $white;
+                font-size: 90%;
+            }
+        }
+    }
+
+    .inline-stats {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .stats-item {
+            .stat-name {
+                font-weight: 400;
+                color: $title-grey;
+            }
+
+            .stat-data {
+                font-weight: bold;
+                font-size: 1.4rem;
+            }
+        }
+    }
+
+    &.is-skewed {
+        .img-header {
+            transform: skewY(-8deg);
+            margin-top: -50px;
+            min-height: 270px;
+            background: $secondary;
+        }
+
+        .img-block {
+            transform: skewY(8deg);
+            padding-top: 50px;
+        }
+
+        .card-body {
+            padding-top: 50px;
+        }
+    }
+}
+
+//Portrait stats card
+.stats-card-portrait {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 300px;
+
+    .vertical-stats {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        width: 25%;
+        height: 300px;
+        padding: 30px;
+
+        .stats-item {
+            .stat-name {
+                font-weight: 400;
+                color: $title-grey;
+            }
+
+            .stat-data {
+                font-weight: bold;
+                font-size: 1.4rem;
+            }
+        }
+    }
+
+    .img-header {
+        min-height: 300px;
+        width: 75%;
+        background: $secondary;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .img-block {
+            img {
+                max-height: 100px;
+                border-radius: 50%;
+            }
+
+            .name {
+                font-size: 1.4rem;
+                color: $white;
+                font-weight: 500;
+            }
+
+            .name-details {
+                color: $white;
+                font-size: 90%;
+            }
+        }
+    }
+}
+
+//Rating card
+.rating-card {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+
+    .rating-avatar img {
+        max-height: 55px;
+        max-width: 55px;
+        border-radius: 50%;
+    }
+
+    .rating-content {
+        margin-left: 15px;
+
+        .star-rating {
+            position: absolute;
+            right: 20px;
+
+            i {
+                font-size: 18px;
+                color: $orange;
+
+                &.unstared {
+                    color: $fade-grey !important;
+                }
+            }
+
+            &.is-heart i {
+                font-size: 16px;
+                color: $red;
+            }
+        }
+
+        .rating-title {
+            padding-top: 20px;
+            font-weight: 500;
+            color: $blue-grey;
+        }
+
+        .rating-text {
+            font-size: 88%;
+        }
+    }
+}
+
+//Followers card
+.following-card {
+    padding: 20px;
+    background: $blue;
+
+    .icon-heading {
+        width: 100%;
+        padding-bottom: 20px;
+
+        .counter {
+            font-size: 2rem;
+            font-weight: 700;
+            color: $white;
+        }
+    }
+
+    .achievement {
+        padding-top: 15px;
+        padding-bottom: 20px;
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: $white;
+        width: 100%;
+    }
+
+    .avatars {
+        text-align: center;
+
+        img {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 3px solid $white;
+
+            &:not(:first-child) {
+                margin-left: -15px;
+            }
+        }
+    }
+}
+
+//Skype card
+.skype-card {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .skype-avatar {
+        position: relative;
+
+        img {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+        }
+
+        i {
+            position: absolute;
+            right: -12px;
+            bottom: 10px;
+            font-size: 1rem;
+            padding: 10px;
+            background: $blue;
+            border-radius: 50%;
+            color: $white;
+        }
+    }
+
+    .skype-info {
+        margin-left: 25px;
+
+        .name {
+            font-weight: 500;
+            color: $blue-grey;
+        }
+
+        .status {
+            font-size: 90%;
+            color: $blue;
+        }
+    }
+
+    .call {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+}
+
+//tweet card
+.tweet-card {
+    padding: 20px;
+
+    .tweet-header {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+        }
+
+        .user-info {
+            margin-left: 15px;
+
+            .name {
+                font-weight: 500;
+                color: $blue-grey;
+            }
+
+            .alias {
+                font-size: 90%;
+                color: $title-grey;
+            }
+        }
+
+        .twitter-icon {
+            margin-left: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.4rem;
+            color: $twitter;
+        }
+    }
+
+    .tweet-content {
+        color: $blue-grey;
+        font-size: 92%;
+        padding-top: 10px;
+    }
+
+    .hashtags span {
+        font-weight: 500;
+        color: $blue-grey;
+        margin: 0 5px;
+        font-size: 90%;
+    }
+
+    &.is-branded {
+        background: $twitter;
+
+        .user-info {
+            margin-left: 0;
+        }
+
+        .user-info .name, .user-info .alias, .twitter-icon, .tweet-content, .hashtags span {
+            color: $white;
+        }
+    }
+}
+
+//Social card
+.social-card {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .social-icon {
+        font-size: 40px;
+        color: $white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .stat-count {
+        margin-left: 25px;
+
+        .count {
+            font-size: 25px;
+            font-weight: 700;
+            color: $white;
+
+            span {
+                font-weight: 300;
+                font-size: 90%;
+            }
+        }
+
+        .count-info {
+            color: $white;
+            font-size: 85%;
+        }
+    }
+
+    .symbol {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 28px;
+        color: $white;
+        margin-left: auto;
+    }
+
+    &.is-facebook {
+        background: $facebook;
+    }
+
+    &.is-twitter {
+        background: $twitter;
+    }
+
+    &.is-github {
+        background: $github;
+    }
+}
+
+//Social metro grid
+.social-metro {
+    .metro-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 2px;
+        cursor: pointer;
+        transition: opacity 0.3s;
+
+        &:hover {
+            opacity: 0.8;
+
+            i {
+                transform: scale(0.8);
+            }
+        }
+
+        i {
+            color: $white;
+            transition: transform .3s;
+        }
+
+        &.is-big {
+            height: 180px;
+
+            i {
+                font-size: 50px;
+            }
+        }
+
+        &.is-small {
+            height: 90px;
+
+            i {
+                font-size: 25px;
+            }
+        }
+
+        &.is-facebook {
+            background: $facebook;
+        }
+
+        &.is-twitter {
+            background: $twitter;
+        }
+
+        &.is-google-plus {
+            background: $google-plus;
+        }
+
+        &.is-github {
+            background: $github;
+        }
+
+        &.is-linkedin {
+            background: $linkedin;
+        }
+
+        &.is-youtube {
+            background: $youtube;
+        }
+
+        &.is-rss {
+            background: $orange;
+        }
+    }
+}

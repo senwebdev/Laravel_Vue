@@ -1,0 +1,6 @@
+# Mutation to log the user out.
+mutation {
+  logout {
+   message
+  }
+}

@@ -1,0 +1,3 @@
+extend type Query {
+    me: User @middleware(checks: ["auth:api"]) @auth
+}

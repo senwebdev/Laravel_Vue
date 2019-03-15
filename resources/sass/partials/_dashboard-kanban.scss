@@ -1,0 +1,807 @@
+/*! _dashboard-kanban.scss | Bulkit | CSS Ninja */
+
+/* ==========================================================================
+Dashboard kanban styles
+========================================================================== */
+
+/***
+TABLE OF CONTENTS
+=============================================================================
+0. Header
+1. Title
+2. Boards
+3. Delete board modal
+4. Dragula styles
+5. Boards page
+
+=============================================================================
+***/
+
+/* ==========================================================================
+0. Wrapper
+========================================================================== */
+
+//Main wrapper
+.kanban-main-wrap {
+    .column.is-hidden-mobile {
+        display: none !important;
+    }
+
+    .column {
+        padding: .5rem;
+    }
+
+    .dashboard-wrapper {
+        padding-top: 20px !important;
+
+        .section-wrapper {
+            position: relative;
+            max-width: 1406px;
+        }
+    }
+}
+
+/* ==========================================================================
+1. Title
+========================================================================== */
+
+//Wrapper
+.kanban-title-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 80px;
+    padding: 0 10px;
+
+    .control {
+        max-width: 350px;
+
+        .input {
+            padding-left: 44px;
+        }
+    }
+
+    .input-icon {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        width: 40px;
+    }
+
+    //Action bar
+    .list-filter {
+        display: flex;
+        width: 100%;
+        padding-bottom: 20px;
+
+        //Button
+        .button {
+            height: 40px !important;
+            min-width: 110px;
+
+            i {
+                padding-right: 0;
+            }
+        }
+
+        //Kanban navigation
+        .nav-buttons {
+            margin-left: auto;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+
+            .button {
+                height: 40px !important;
+                width: 40px !important;
+                min-width: 40px !important;
+                border-radius: 50%;
+                border-color: $primary;
+                background: $primary;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0 2px;
+                transform: scale(1);
+
+                &:hover {
+                    opacity: .9;
+                    box-shadow: $secondary-box-shadow;
+                }
+
+                &.is-disabled {
+                    transform: scale(0);
+                }
+
+                .fa {
+                    font-size: 10px;
+                    color: $white-smoke;
+                }
+            }
+        }
+    }
+}
+
+//Page title
+.kanban-title {
+    font-weight: 600;
+    color: $blue-grey;
+    margin-bottom: 0 !important;
+}
+
+/* ==========================================================================
+2. Boards
+========================================================================== */
+
+//Kanban board
+.boards-wrapper {
+    position: relative;
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    min-height: 585px;
+    overflow-x: scroll;
+
+    //Wrapper
+    .boards {
+        padding: 20px 0 40px 0;
+
+        //Kanban column
+        .board {
+            max-width: 352px;
+        }
+
+        //Kanban card
+        .board-box {
+            width: 100%;
+            padding: 8px 10px;
+            background: $white-smoke;
+            border-radius: 6px;
+            box-shadow: 0 2px 2px rgba(10, 10, 10, 0.095), 0 0 0 1px rgba(10, 10, 10, 0.095);
+
+            //Empty state modifier
+            &.is-empty {
+                .column-placeholder {
+                    display: block !important;
+                }
+            }
+
+            //Header
+            .box-header {
+                display: flex;
+                align-items: center;
+
+                .control {
+                    flex-grow: 2;
+
+                    .input {
+                        height: 36px;
+                        font-size: 1.2rem;
+                        padding-bottom: 8px;
+
+                        &:focus {
+                            border-color: lighten(#ccc, 5%) !important;
+                        }
+                    }
+                }
+
+                //Meta
+                .header-meta {
+                    display: flex;
+                    align-items: baseline;
+
+                    //Colum name
+                    .name {
+                        font-weight: 600;
+                        font-family: 'Nexa Bold', sans-serif;
+                        font-size: 1.2rem;
+                        color: $blue-grey;
+                    }
+
+                    //Deals count
+                    .count {
+                        margin: 0 6px;
+
+                        span {
+                            display: block;
+
+                            //padding-left: 5px;
+                            font-size: 16px;
+                            font-weight: bold;
+                            color: #AAAAAA;
+                        }
+                    }
+                }
+
+                .dropdown {
+                    margin-left: auto;
+                }
+            }
+
+            //Deals list
+            .items {
+                padding: 10px 0 8px 0;
+
+                //Placeholder
+                .column-placeholder {
+                    padding: 20px 0;
+                    display: none;
+
+                    .placeholder-image {
+                        display: block;
+                        max-width: 200px;
+                        margin: 0 auto;
+                    }
+
+                    .placeholder-text {
+                        padding: 10px 0;
+
+                        h3 {
+                            font-size: 1.2rem;
+                            margin-bottom: 0;
+                        }
+
+                        p {
+                            padding: 4px 10px;
+                            font-size: 1.1rem;
+                            color: $muted-grey;
+                        }
+                    }
+                }
+            }
+        }
+
+        //Create board form
+        .is-create-board {
+            &:after {
+                content: '';
+                flex: 0 0 10px;
+            }
+
+            //Placeholder
+            .board-placeholder {
+                .placeholder-inner {
+                    padding: 20px;
+                    background: lighten($fade-grey, 4%);
+                    border: 2px dashed $placeholder;
+                    border-radius: 6px;
+                    font-size: 1.25rem;
+                    color: $muted-grey;
+                    font-weight: 600;
+                    text-align: center;
+                    transition: all .3s;
+                    cursor: pointer;
+
+                    &:hover {
+                        border-color: $muted-grey;
+                        color: darken($muted-grey, 5%);
+                    }
+                }
+
+                //Create form
+                .create-box {
+                    width: 100%;
+                    padding: 8px 10px;
+                    background: $white-smoke;
+                    border-radius: 6px;
+                    box-shadow: 0 2px 2px rgba(10, 10, 10, 0.095), 0 0 0 1px rgba(10, 10, 10, 0.095);
+
+                    .actions {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 0 6px;
+                        margin-top: 10px;
+
+                        a {
+                            display: block;
+                            color: $blue-grey;
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+//Kanban card
+.kanban-box {
+    position: relative;
+    padding: 1rem;
+
+    &:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+
+    //Title
+    .box-title {
+        font-size: 1.25rem;
+        color: $blue-grey;
+        font-weight: 600;
+        max-width: 285px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    //Subtitle
+    .box-subtitle {
+        font-size: 14px;
+        color: $muted-grey;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        span {
+            display: block;
+        }
+    }
+
+    //Timestamp
+    .time {
+        margin-bottom: 20px;
+        font-size: 1rem;
+        color: $muted-grey;
+    }
+
+    //Meta
+    .box-meta {
+        display: flex;
+        align-items: center;
+
+        //people
+        .assignees {
+            display: flex;
+            align-items: center;
+
+            .assignee {
+                display: block;
+                height: 38px;
+                width: 38px;
+                font-size: .8rem;
+                border-radius: 50%;
+                border: 3px solid $white;
+                background: $primary;
+                color: $white-smoke;
+
+                &:not(:first-child) {
+                    $var: 14;
+
+                    @for $i from 1 through 5 {
+                        &:nth-child(#{$i}) {
+                            margin-left: -#{$var}px;
+                        }
+                    }
+                }
+
+                //more indicator
+                &.is-more {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 38px;
+                    width: 38px;
+                    font-weight: 500;
+                }
+            }
+        }
+
+        //Deal value
+        .deal-value {
+            margin-left: auto;
+            font-size: 1.2rem;
+            color: $secondary;
+            font-weight: 700;
+        }
+
+        .dropdown {
+            height: 30px;
+            width: 30px;
+
+            .button {
+                height: 30px;
+                width: 30px;
+                border-radius: 50%;
+
+                i {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}
+
+/* ==========================================================================
+3. Delete board modal
+========================================================================== */
+
+//Alert box
+.alert-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
+
+    //Active state
+    &.is-active {
+        z-index: 1001;
+        opacity: 1;
+        pointer-events: all;
+
+        //Overlay
+        .alert-box-overlay {
+            opacity: 1;
+        }
+
+        //Card
+        .flex-card {
+            transform: scale(1) !important;
+        }
+    }
+
+    //Overlay
+    .alert-box-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        opacity: 0;
+        transition: all .3s;
+    }
+
+    //Card
+    .alert-box-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 540px;
+        margin: 0 auto;
+
+        .flex-card {
+            border-radius: 6px;
+            transition: all .3s;
+            transform: scale(0);
+        }
+
+        .header {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 8px 12px;
+
+            .close-alert {
+                height: 36px;
+                width: 36px;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                transition: all .3s;
+
+                &:hover {
+                    background: $fade-grey;
+                }
+
+                i {
+                    font-size: 18px;
+                    font-weight: 600;
+                    color: $muted-grey;
+                    transition: all .3s;
+                }
+            }
+        }
+
+        .card-body {
+            padding-top: 0;
+        }
+
+        .body-inner {
+            text-align: center;
+
+            img {
+                display: block;
+                margin: 0 auto;
+                width: 260px;
+            }
+
+            h3 {
+                font-size: 1.4rem;
+                font-weight: 600;
+                color: $blue-grey;
+                font-family: 'Nexa Bold', sans-serif;
+            }
+
+            p {
+                font-size: 1.2rem;
+                color: $muted-grey;
+            }
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+
+            .button {
+                padding: 18px;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+/* ==========================================================================
+4. Dragula styles
+========================================================================== */
+
+.board-box {
+    .kanban-box {
+        //fallback if grab cursor is unsupported
+        cursor: move;
+        cursor: grab;
+        cursor: -moz-grab;
+        cursor: -webkit-grab;
+
+        //(Optional) Apply a "closed-hand" cursor during drag operation.
+        &:active {
+            cursor: grabbing;
+            cursor: -moz-grabbing;
+            cursor: -webkit-grabbing;
+        }
+    }
+}
+
+.gu-transit {
+    cursor: grabbing !important;
+    cursor: -moz-grabbing !important;
+    cursor: -webkit-grabbing !important;
+}
+
+.gu-mirror {
+    position: fixed;
+}
+
+/* ==========================================================================
+5. Boards page
+========================================================================== */
+
+.boards-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .dropdown {
+        > .button {
+            min-height: 40px;
+        }
+    }
+}
+
+.boards-grid {
+    margin-top: 30px;
+
+    .flex-card {
+        text-align: center;
+        position: relative;
+
+        .card-inner {
+            padding: 40px;
+
+            .board-title {
+                font-family: 'Nexa Bold', sans-serif;
+                font-weight: 500;
+                font-size: 1.2rem;
+                color: $blue-grey;
+            }
+
+            .board-icon {
+                margin: 30px 0;
+
+                img {
+                    display: block;
+                    height: 50px;
+                    margin: 0 auto;
+                    max-width: 50px;
+                }
+            }
+
+            .board-summary {
+                font-family: 'Nexa Bold', sans-serif;
+                font-weight: 500;
+                font-size: 1rem;
+                color: $muted-grey;
+            }
+
+            .board-meta {
+                margin: 30px 0 0 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                //Toggle
+                .mood-toggle {
+                    margin: 0 auto;
+                    width: 76px;
+                    display: block;
+                    position: relative;
+                    cursor: pointer;
+                    font-size: 22px;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none;
+
+                    input {
+                        position: absolute;
+                        opacity: 0;
+                        cursor: pointer;
+
+                        &:checked ~ .toggler {
+                            border-color: $orange;
+
+                            .happy, .sad {
+                                transform: translateX(100%) rotate(360deg);
+                            }
+
+                            .happy {
+                                opacity: 1;
+                            }
+
+                            .sad {
+                                opacity: 0;
+                            }
+                        }
+                    }
+
+                    .toggler {
+                        position: relative;
+                        display: block;
+                        height: 30px;
+                        width: 76px;
+                        border: 1.6px solid $placeholder;
+                        border-radius: 100px;
+                        transition: all .3s;
+
+                        .happy, .sad {
+                            position: absolute;
+                            top: -6px;
+                            left: -2px;
+                            height: 40px;
+                            width: 40px;
+                            border-radius: 50%;
+                            background: black;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            transform: translateX(0) rotate(0);
+                            transition: all .3s ease;
+
+                            i {
+                                color: $white;
+                                font-size: 18px;
+                            }
+                        }
+
+                        .sad {
+                            background: $secondary;
+                            border-color: $secondary;
+                            opacity: 1;
+                            z-index: 1;
+                        }
+
+                        .happy {
+                            background: $orange;
+                            border-color: $orange;
+                            opacity: 0;
+                            z-index: 0;
+                        }
+                    }
+                }
+
+                .board-assignees {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 50%;
+
+                    .assignee {
+                        display: block;
+                        height: 44px;
+                        width: 44px;
+                        font-size: .9rem;
+                        font-weight: 600;
+                        border-radius: 50%;
+                        border: 2px solid $white-smoke;
+                        background: $primary;
+                        color: $white-smoke;
+
+                        &:not(:first-child) {
+                            $var: 14;
+
+                            @for $i from 1 through 5 {
+                                &:nth-child(#{$i}) {
+                                    margin-left: -#{$var}px;
+                                }
+                            }
+                        }
+
+                        //more indicator
+                        &.is-more {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            height: 44px;
+                            width: 44px;
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+        }
+
+        .card-foot {
+            display: flex;
+            align-items: center;
+            border-top: 1px solid $fade-grey;
+
+            .footer-block {
+                width: 50%;
+                height: 80px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &:first-child {
+                    border-right: 1px solid $fade-grey;
+                }
+
+                span {
+                    display: block;
+
+                    &:first-child {
+                        font-size: 1.1rem;
+                        font-family: 'Nexa Bold', sans-serif;
+                        font-weight: 500;
+
+                        &:before {
+                            content: '$';
+                            font-size: 80%;
+                        }
+                    }
+
+                    &:nth-child(2) {
+                        color: $muted-grey;
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            text-align: left;
+
+            > .button {
+                border-radius: 50%;
+            }
+        }
+    }
+}

@@ -1,0 +1,7 @@
+# Mutation to resend email confirmation code.
+mutation userResendConfirmationCode ($email: String! ){
+  resendConfirmationCode ( email: $email ) {
+    status
+    message
+  }
+}

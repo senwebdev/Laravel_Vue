@@ -1,0 +1,4 @@
+extend type Query {
+    ticket(id: ID @eq): Ticket @find(model: "App\\Models\\Ticket")
+    tickets: [Ticket]! @paginate(type: "paginator" model: "App\\Models\\Ticket")
+}

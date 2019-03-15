@@ -1,0 +1,342 @@
+/*! _dashboard-layout.scss | Bulkit | CSS Ninja */
+
+/* ==========================================================================
+Dashboard feed styles
+========================================================================== */
+
+/***
+TABLE OF CONTENTS
+=============================================================================
+0. Layout
+1. Footer
+=============================================================================
+***/
+
+/* ==========================================================================
+0. Layout wrapper
+========================================================================== */
+
+body {
+    min-height: 100vh;
+}
+
+//Removing top and bottom padding from layout
+.columns.dashboard-columns {
+    .column {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
+
+//Setting up fluid transitions for navbar and dashboard wrapper
+#dashboard-wrapper, .dashboard-wrapper, .dashboard-nav {
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
+//Dashboard wrapper
+#dashboard-wrapper {
+    padding-top: 65px;
+    width: calc(100% - 80px);
+    margin-left: 80px;
+
+    &.no-padding {
+        padding-top: 0 !important;
+    }
+}
+
+//Main content spacing
+.content.column {
+    padding: 12px 0 0 0 !important;
+}
+
+//Dashboard wrapper
+.dashboard-wrapper {
+    padding: 60px 20px 0 20px;
+    min-height: 100vh;
+    transform: translateY(0);
+    transition: all .3s;
+
+    &.is-pushed-nav-mobile {
+        transform: translateY(65px);
+    }
+
+    &.is-kanban {
+        min-height: unset !important;
+    }
+
+    h3.popover-title {
+        margin-top: 0 !important;
+    }
+
+    //Flex card styles
+    .flex-card {
+        //squared
+        &.is-squared {
+            max-height: 270px;
+        }
+
+        //Widgets colored material headers
+        .material-header {
+            padding: 20px;
+            margin: 0 20px;
+            margin-top: -10px;
+            border-radius: 4px;
+
+            h3 {
+                font-weight: 500;
+                font-size: 1.2rem;
+                font-family: 'Nexa Bold', sans-serif;
+                color: $white;
+                padding-bottom: 10px;
+            }
+
+            &.is-primary {
+                background: $primary;
+                box-shadow: $primary-box-shadow;
+            }
+
+            &.is-secondary {
+                background: $secondary;
+                box-shadow: $secondary-box-shadow;
+            }
+
+            &.is-gradient {
+                background: #7F00FF;
+                background: -webkit-linear-gradient(to right, #E100FF, #7F00FF);
+                background: linear-gradient(to right, #E100FF, #7F00FF);
+                box-shadow: $secondary-box-shadow;
+            }
+        }
+
+        //Dashboard statistic tiles icon header
+        .icon-header i {
+            padding: 22px;
+            font-size: 24px;
+            font-weight: normal;
+            color: $white;
+            border-radius: 3px;
+            position: absolute;
+            left: 10px;
+            top: -20px;
+
+            &.primary {
+                background-color: $primary;
+                box-shadow: $primary-box-shadow;
+            }
+
+            &.secondary {
+                background-color: $secondary;
+                box-shadow: $secondary-box-shadow;
+            }
+
+            &.accent {
+                background-color: $accent;
+                box-shadow: $accent-box-shadow;
+            }
+        }
+
+        //Panel header with dropdown
+        .header-control {
+            position: absolute;
+            right: 20px;
+            top: 23px;
+
+            i.sl-icon-arrow-down {
+                font-size: 12px !important;
+                color: $title-grey;
+            }
+
+            ul {
+                margin-left: 0;
+                margin-top: 0;
+
+                li:hover {
+                    background: $secondary !important;
+                    box-shadow: $secondary-box-shadow;
+                    color: $white !important;
+                }
+            }
+
+            .dropContain {
+                left: -20px !important;
+            }
+        }
+
+        //Card heading
+        .card-heading {
+            padding: 20px;
+            color: $blue-grey;
+            font-size: 1.2rem;
+            font-weight: 600;
+            font-family: 'Nexa Bold', sans-serif;
+            color: $blue-grey;
+            margin: 0 !important;
+
+            //with icon
+            &.has-icon {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .sl {
+                    font-size: 1.1rem;
+                }
+            }
+
+            //with absolute positionning
+            &.is-absolute {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+            }
+
+            &.is-bordered {
+                border-bottom: 1px solid darken($fade-grey, 5%);
+            }
+
+            > span {
+                font-family: 'Nexa Bold', sans-serif;
+            }
+        }
+
+        //card body
+        .card-body-20 {
+            padding: 20px;
+        }
+
+        //card content section
+        .content {
+            padding: 20px !important;
+
+            //title
+            .card-title.is-tile {
+                font-size: 1.45rem;
+                color: $blue-grey;
+                font-weight: 500;
+                margin-top: 15px;
+                float: right;
+                position: relative;
+                top: -20px;
+                span {
+                    font-family: 'Nexa Bold', sans-serif;
+                }
+
+                .card-stat {
+                    font-size: 1rem;
+                    font-weight: 500;
+                    position: relative;
+                    margin-top: 5px;
+                    font-size: 20px;
+
+                    &.primary {
+                        color: $primary;
+                    }
+
+                    &.secondary {
+                        color: $secondary;
+                    }
+
+                    &.accent {
+                        color: $accent;
+                    }
+
+                    .stat-type {
+                        font-size: 0.8rem !important;
+                    }
+                }
+            }
+        }
+
+        //message content
+        .content.message-content {
+            h5 {
+                margin-bottom: 0 !important;
+
+                &.primary {
+                    color: $primary;
+                }
+
+                &.secondary {
+                    color: $secondary;
+                }
+            }
+        }
+
+        //See more links
+        .more a {
+            font-weight: 500;
+            position: absolute;
+            bottom: 10px;
+            left: 20px;
+            transition: color 0.4s;
+
+            &.primary {
+                color: $title-grey;
+
+                &:hover {
+                    color: $primary;
+                }
+            }
+
+            &.secondary {
+                color: $title-grey;
+
+                &:hover {
+                    color: $secondary;
+                }
+            }
+        }
+
+        //Feed icon
+        .feed-icon {
+            max-height: 60px;
+            margin: 15px 0 10px 0;
+            padding-left: 15px;
+        }
+
+        //Timestamp
+        .timestamp {
+            font-size: 10px;
+            color: $title-grey;
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+        }
+
+        //avatar list
+        .avatar-list a {
+            display: inline-block;
+
+            img {
+                height: 36px;
+                width: 36px;
+                border-radius: 50%;
+                margin-right: 5px;
+                margin-bottom: 10px;
+            }
+        }
+    }
+}
+
+/* ==========================================================================
+1. Footer
+========================================================================== */
+
+//Footer
+footer.footer {
+    border-top: 1px solid #e5e5e5;
+    margin-left: 80px;
+
+    .small-footer-logo {
+        margin-top: 20px;
+        height: 38px;
+    }
+
+    .more-info-company {
+        font-family: 'Nexa Light', sans-serif;
+        font-size: 1.6rem;
+        padding-top: 40px;
+        color: $title-grey;
+    }
+}

@@ -1,0 +1,5 @@
+# Permission type.
+type Permission {
+    id: ID!
+    key: String!
+}

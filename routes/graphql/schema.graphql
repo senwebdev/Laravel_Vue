@@ -1,0 +1,34 @@
+#A datetime string with format 'Y-m-d H:i:s', e.g. '2018-01-01 13:00:00'."
+scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+
+#A date string with format 'Y-m-d', e.g. '2011-05-23'."
+scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
+
+#import ./Type/User.graphql
+#import ./Type/Role.graphql
+#import ./Type/Permission.graphql
+#import ./Type/Ticket.graphql
+#import ./Type/Application.graphql
+#import ./Type/TimeStamp.graphql
+#import ./Type/ResendConfirmCode.graphql
+
+type Query {
+    application: Application ! @field(resolver: "App\\Http\\GraphQL\\Queries\\Application@resolve")
+}
+
+# Authentication query.
+#import ./Query/Auth.graphql
+# User query.
+#import ./Query/User.graphql
+# Ticket query.
+#import ./Query/Ticket.graphql
+
+
+type Mutation {
+    getTimeStamp(date: String!, time: String!) : TimeStamp @field(resolver: "App\\Http\\GraphQL\\Mutations\\TimeStamp@resolve")
+}
+
+# User Mutation.
+#import ./Mutation/User.graphql
+# Ticket Mutation.
+#import ./Mutation/Ticket.graphql

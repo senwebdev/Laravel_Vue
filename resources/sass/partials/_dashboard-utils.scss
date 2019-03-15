@@ -1,0 +1,907 @@
+/*! _dashboard-utils.scss | Bulkit | CSS Ninja */
+
+/* ==========================================================================
+Dashboard utilities
+========================================================================== */
+
+/***
+TABLE OF CONTENTS
+=============================================================================
+0. Breadcrumbs
+1. Close and menu icons
+2. Hamburger icon
+3. FAB buttons
+4. Buttons
+5. Modals
+6. Helpers
+7. Dashboard login style switcher
+8. Links
+9. Fileuploader Thumbnails theme
+=============================================================================
+***/
+
+/* ==========================================================================
+0. Breadcrumbs
+========================================================================== */
+
+//Dashboard breadcrumbs
+.breadcrumbs {
+
+    position: absolute;
+    top: 80px;
+    right: 5%;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    color: $muted-grey;
+    z-index: 10;
+
+    ul {
+        margin: 0 !important;
+
+        li {
+            display: inline-block;
+            list-style: none;
+            margin: 0 0 0 10px;
+
+            &:first-child:before {
+                content: '';
+            }
+
+            &:before {
+                content: "\f105";
+                font-family: "FontAwesome";
+                color: #a0a0a0;
+                font-size: 14px;
+                margin-right: 15px;
+            }
+        }
+    }
+
+    a {
+        font-weight: 500;
+        color: #00D1B2;
+
+        &:hover {
+            color: #7F00FF;
+        }
+    }
+
+}
+
+/* ==========================================================================
+1. Close and menu icons
+========================================================================== */
+
+//Close icon
+.cross-container {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+
+    span {
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 1px;
+        border-radius: 3px;
+        background: $white;
+    }
+
+    .top {
+        top: 10px;
+        left: 0;
+        transform: rotate(45deg);
+    }
+
+    .bottom {
+        bottom: 9px;
+        left: 0;
+        transform: rotate(-45deg);
+    }
+}
+
+/* ==========================================================================
+2. Hamburger icons
+========================================================================== */
+
+.menu-wrapper {
+    font-size: 20px;
+    color: $title-grey;
+    line-height: 48px;
+    text-align: center;
+    background: transparent;
+    display: block;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    padding: 0px;
+    float: left;
+    margin: 0 14px;
+
+    //toggle wrapper
+    .icon-box-toggle {
+        height: 100%;
+        width: 100%;
+        background: tranparent;
+        position: relative;
+        display: block;
+
+        //active state
+        &.active {
+            .rotate {
+                -webkit-transform: rotate(90deg);
+                -moz-transform: translate(0px, 0px) rotate(90deg);
+                -ms-transform: translate(0px, 0px) rotate(90deg);
+                -o-transform: translate(0px, 0px) rotate(90deg);
+                transform: translate(0px, 0px) rotate(90deg);
+            }
+
+            //top bar
+            i.icon-line-top {
+                margin: -1.5px 0 0 -10px;
+                left: 50%;
+                top: 50%;
+                -webkit-transform: rotate(45deg);
+                -moz-transform: translate(0px, 0px) rotate(45deg);
+                -ms-transform: translate(0px, 0px) rotate(45deg);
+                -o-transform: translate(0px, 0px) rotate(45deg);
+                transform: translate(0px, 0px) rotate(45deg);
+            }
+
+            //middle bar
+            i.icon-line-center {
+                visibility: hidden;
+                width: 1px;
+                height: 2px;
+                left: 70%;
+            }
+
+            //bottom bar
+            i.icon-line-bottom {
+                margin: -1.5px 0 0 -10px;
+                left: 50%;
+                top: 50%;
+                -webkit-transform: rotate(135deg);
+                -moz-transform: translate(0px, 0px) rotate(135deg);
+                -ms-transform: translate(0px, 0px) rotate(135deg);
+                -o-transform: translate(0px, 0px) rotate(135deg);
+                transform: translate(0px, 0px) rotate(135deg);
+            }
+        }
+    }
+
+    //wrapper
+    .rotate {
+        background: transparent;
+        display: block;
+        width: 48px;
+        height: 48px;
+        padding: 0px;
+        -webkit-transition: all .5s ease;
+        -moz-transition: all .5s ease;
+        -o-transition: all .5s ease;
+        transition: all .5s ease;
+    }
+
+    //top bar
+    .icon-line-top {
+        position: absolute;
+        width: 20px;
+        height: 2px;
+        background: $white;
+        margin: -3px 0 0 -10px;
+        left: 50%;
+        top: 40%;
+        -webkit-transition: all .2s ease;
+        -moz-transition: all .2s ease;
+        -o-transition: all .2s ease;
+        transition: all .2s ease;
+    }
+
+    //middle bar
+    .icon-line-center {
+        position: absolute;
+        width: 20px;
+        height: 2px;
+        background: $white;
+        margin: -1.5px 0 0 -10px;
+        left: 50%;
+        top: 50%;
+        -webkit-transition: all .2s ease;
+        -moz-transition: all .2s ease;
+        -o-transition: all .2s ease;
+        transition: all .2s ease;
+    }
+
+    //bottom bar
+    .icon-line-bottom {
+        position: absolute;
+        width: 20px;
+        height: 2px;
+        background: $white;
+        margin: 1.4px 0 0 -10px;
+        left: 50%;
+        top: 60%;
+        -webkit-transition: all .2s ease;
+        -moz-transition: all .2s ease;
+        -o-transition: all .2s ease;
+        transition: all .2s ease;
+    }
+}
+
+/* ==========================================================================
+3. FAB buttons
+========================================================================== */
+
+//Basic FAB style
+.fab-btn {
+    box-sizing: border-box;
+    width: 56px;
+    height: 56px;
+    padding: 16px;
+    border: none;
+    border-radius: 50%;
+    color: $white;
+    transition: all 0.2s ease;
+    cursor: pointer;
+
+    &:active, &:focus {
+        outline: none !important;
+    }
+}
+
+//Mini FAB
+.fab-btn.mini {
+    width: 48px;
+    height: 48px;
+    padding: 12px;
+    transform: rotate(-600deg);
+    background: $primary;
+}
+
+//profile FAB settings
+.profile-fab {
+    position: absolute;
+    width: 56px;
+    height: 56px;
+    padding: 0px;
+    bottom: -28px;
+    right: 25px;
+    z-index: 100;
+}
+
+.profile-fab .notifications, .profile-fab .team, .profile-fab .details {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    opacity: 0;
+}
+
+.profile-fab .fab-wrapper {
+    width: 56px;
+    height: 56px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+.profile-fab .fab-wrapper .pop-fab {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    background: $secondary;
+    box-shadow: $secondary-box-shadow;
+
+    //menu wrapper
+    .profile-menu-wrapper {
+        position: relative;
+        font-size: 20px;
+        color: #A9ABAC;
+        line-height: 56px;
+        text-align: center;
+        background: transparent;
+        display: block;
+        width: 56px;
+        height: 56px;
+        cursor: pointer;
+        padding: 0px;
+        top: -16px;
+        left: -15px;
+
+        //hidden hamburger
+        .icon-box-toggle {
+            height: 100%;
+            width: 100%;
+            background: tranparent;
+            position: relative;
+            display: block;
+
+            //active state
+            &.active {
+                .rotate {
+                    -webkit-transform: rotate(90deg);
+                    -moz-transform: translate(0px, 0px) rotate(90deg);
+                    -ms-transform: translate(0px, 0px) rotate(90deg);
+                    -o-transform: translate(0px, 0px) rotate(90deg);
+                    transform: translate(0px, 0px) rotate(90deg);
+                }
+
+                i.icon-line-top {
+                    margin: -1.5px 0 0 -10px;
+                    left: 50%;
+                    top: 50%;
+                    -webkit-transform: rotate(45deg);
+                    -moz-transform: translate(0px, 0px) rotate(45deg);
+                    -ms-transform: translate(0px, 0px) rotate(45deg);
+                    -o-transform: translate(0px, 0px) rotate(45deg);
+                    transform: translate(0px, 0px) rotate(45deg);
+                }
+
+                i.icon-line-center {
+                    visibility: hidden;
+                    width: 1px;
+                    height: 2px;
+                    left: 70%;
+                }
+
+                i.icon-line-bottom {
+                    margin: -1.5px 0 0 -10px;
+                    left: 50%;
+                    top: 50%;
+                    -webkit-transform: rotate(135deg);
+                    -moz-transform: translate(0px, 0px) rotate(135deg);
+                    -ms-transform: translate(0px, 0px) rotate(135deg);
+                    -o-transform: translate(0px, 0px) rotate(135deg);
+                    transform: translate(0px, 0px) rotate(135deg);
+                }
+            }
+        }
+
+        //wrapper
+        .rotate {
+            background: transparent;
+            display: block;
+            width: 56px;
+            height: 56px;
+            padding: 0px;
+            -webkit-transition: all .5s ease;
+            -moz-transition: all .5s ease;
+            -o-transition: all .5s ease;
+            transition: all .5s ease;
+        }
+
+        //top line
+        .icon-line-top {
+            position: absolute;
+            width: 20px;
+            height: 2px;
+            background: $white;
+            margin: -3px 0 0 -10px;
+            left: 50%;
+            top: 40%;
+            -webkit-transition: all .2s ease;
+            -moz-transition: all .2s ease;
+            -o-transition: all .2s ease;
+            transition: all .2s ease;
+        }
+
+        //middle line
+        .icon-line-center {
+            position: absolute;
+            width: 20px;
+            height: 2px;
+            background: $white;
+            margin: -1.5px 0 0 -10px;
+            left: 50%;
+            top: 50%;
+            -webkit-transition: all .2s ease;
+            -moz-transition: all .2s ease;
+            -o-transition: all .2s ease;
+            transition: all .2s ease;
+        }
+
+        //bottom line
+        .icon-line-bottom {
+            position: absolute;
+            width: 20px;
+            height: 2px;
+            background: $white;
+            margin: 1.2px 0 0 -10px;
+            left: 50%;
+            top: 60%;
+            -webkit-transition: all .2s ease;
+            -moz-transition: all .2s ease;
+            -o-transition: all .2s ease;
+            transition: all .2s ease;
+        }
+    }
+}
+
+//mini FABS colors
+.details {
+    background: $accent !important;
+}
+
+.team {
+    background: $primary !important;
+}
+
+.notifications {
+    background: $secondary !important;
+}
+
+//Popped mini FABs
+.profile-fab.is-open {
+    width: 150px;
+    height: 150px;
+
+    .fab-btn.mini {
+        transform: rotate(0);
+    }
+}
+
+.profile-fab.is-open .notifications {
+    left: -94px;
+    top: 4px;
+    opacity: 1;
+}
+
+.profile-fab.is-open .team {
+    left: -65.296px;
+    top: -65.296px;
+    opacity: 1;
+}
+
+.profile-fab.is-open .details {
+    left: 4px;
+    top: -94px;
+    opacity: 1;
+}
+
+/* ==========================================================================
+4. Buttons
+========================================================================== */
+
+.tag {
+    padding-bottom: 3px;
+
+    &.is-squared {
+        border-radius: 4px !important;
+    }
+}
+
+//Dashboard special button
+.btn-dash {
+    padding: 15px 20px 18px 20px !important;
+    font-weight: 600;
+
+    &.has-icon {
+        padding-right: 26px !important;
+
+        i {
+            font-size: 18px;
+        }
+    }
+}
+
+.load-more-wrapper {
+    max-width: 180px;
+    margin: 0 auto;
+}
+
+//Dropdown button
+.button-dropdown {
+    > .button {
+        &.secondary-btn {
+            background-color: $secondary !important;
+        }
+    }
+
+    //Dropdown menu
+    .dropdown-menu {
+        width: 280px;
+
+        .dropdown-content {
+            .dropdown-item {
+                display: flex;
+                align-items: center;
+                width: 100%;
+
+                span {
+                    display: block;
+                    margin: 0 10px;
+
+                    span {
+                        &:first-child {
+                            font-size: 1rem;
+                            font-weight: 500;
+                        }
+
+                        &:nth-child(2) {
+                            font-size: .9rem;
+                            color: $muted-grey;
+                        }
+                    }
+                }
+
+                i {
+                    font-size: 16px;
+                    color: $muted-grey;
+                }
+            }
+        }
+    }
+}
+
+/* ==========================================================================
+5. Modals
+========================================================================== */
+
+//Time picker inside modal
+.wickedpicker {
+    z-index: 9999 !important;
+
+    span, span:focus, span:active {
+        outline: none !important;
+    }
+}
+
+//Add reminder modal
+#add-reminder-modal {
+    input {
+        padding-bottom: 0 !important;
+    }
+
+    textarea, input {
+        //custom scrollbar
+        &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            color: $placeholder;
+        }
+
+        &::-moz-placeholder { /* Firefox 19+ */
+            color: $placeholder;
+        }
+
+        &:-ms-input-placeholder { /* IE 10+ */
+            color: $placeholder;
+        }
+
+        &:-moz-placeholder { /* Firefox 18- */
+            color: $placeholder;
+        }
+    }
+}
+
+/* ==========================================================================
+6. Helpers
+========================================================================== */
+
+.shadow-z-1 {
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+}
+
+.shadow-z-2 {
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3), 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.shadow-z-3 {
+    box-shadow: 0 13px 25px 0 rgba(0, 0, 0, 0.3), 0 7px 7px 0 rgba(0, 0, 0, 0.19);
+}
+
+.shadow-z-4 {
+    box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.3), 0 14px 12px 0 rgba(0, 0, 0, 0.17);
+}
+
+.shadow-z-5 {
+    box-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================================================================
+7. Dashboard login style switcher
+========================================================================== */
+.switcher {
+    .switcher-block {
+        width: 48px;
+        height: 48px;
+        background-color: $muted-grey;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        border-radius: 4px;
+        transition: all 0.5s;
+        cursor: pointer;
+        overflow: visible;
+
+        &.is-primary {
+            background-color: $primary;
+        }
+
+        &.is-secondary {
+            background-color: $secondary;
+        }
+
+        &.is-accent {
+            background-color: $accent;
+        }
+
+        &:hover {
+            width: 200px;
+
+            .button-text {
+                display: block;
+            }
+        }
+
+        i {
+            position: relative;
+            top: 15px;
+            left: 15px;
+            color: $white;
+            font-size: 1.3rem;
+        }
+
+        .button-text {
+            position: absolute;
+            top: 13px;
+            left: 35%;
+            color: $white;
+            display: none;
+        }
+    }
+}
+
+/* ==========================================================================
+8. Links
+========================================================================== */
+
+//Side links (forgot password, don't have an account etc...)
+.forgot, .no-account, .return {
+    color: $title-grey !important;
+    transition: opacity 0.5s;
+
+    &:hover {
+        opacity: 0.8;
+        color: $primary !important;
+    }
+
+    &.is-secondary {
+        color: $secondary !important;
+    }
+
+    &.is-accent {
+        color: $accent !important;
+    }
+}
+
+//Forgot password
+.forgot-password a {
+    color: #95A5A6;
+    font-weight: normal;
+    padding-right: 20px;
+    transition: all 0.6s;
+
+    &:hover {
+        color: $primary;
+    }
+}
+
+//No account
+.no-account-link {
+    a {
+        color: $title-grey;
+        font-weight: 500;
+
+        &:hover {
+            color: $primary;
+        }
+    }
+}
+
+/* ==========================================================================
+9. Fileuploader Thumbnails theme
+========================================================================== */
+
+.fileuploader-theme-thumbnails {
+    .fileuploader-thumbnails-input, .fileuploader-items-list .fileuploader-item {
+        display: inline-block;
+        width: 20%;
+        width: 90px;
+        height: 90px;
+        line-height: 95px;
+        padding: 10px;
+        vertical-align: top;
+    }
+
+    .fileuploader-thumbnails-input-inner {
+        width: 100%;
+        max-width: 70px;
+        height: 100%;
+        border: 2px dashed #c2cdda;
+        border-radius: 4px;
+        text-align: center;
+        font-size: 30px;
+        color: #acb9c7;
+        vertical-align: top;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-transition: all 0.1s ease;
+        transition: all 0.1s ease;
+
+        span {
+            position: relative;
+            top: -17px;
+        }
+    }
+
+    .fileuploader-thumbnails-input-inner:hover, .fileuploader-thumbnails-input-inner:active {
+        border-color: #92a7bf;
+        color: #899baf;
+    }
+
+    .fileuploader-dragging .fileuploader-thumbnails-input-inner {
+        background: #fff;
+    }
+
+    .fileuploader-items-list {
+        margin: -5px -10px;
+    }
+
+    .fileuploader-item {
+        -webkit-animation: fileuploaderScaleIn 0.2s ease;
+        animation: fileuploaderScaleIn 0.2s ease;
+        border-bottom: 0;
+    }
+
+    .fileuploader-item-inner {
+        position: relative;
+        border-radius: 4px;
+        background: rgba(255, 255, 255, 0.6);
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    .fileuploader-item-inner, fileuploader-item-inner .thumbnail-holder, .fileuploader-items-list .fileuploader-item-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .fileuploader-items-list .fileuploader-item-image {
+        position: relative;
+        text-align: center;
+        overflow: hidden;
+        min-height: 70px;
+    }
+
+    .fileuploader-item .fileuploader-item-image img,
+    .fileuploader-item .fileuploader-item-image canvas {
+        border-radius: 0;
+    }
+
+    .fileuploader-items-list .fileuploader-item-image img {
+        max-height: 100%;
+        min-height: 100%;
+        width: 100%;
+        object-fit: cover;
+        max-width: none;
+    }
+
+    .fileuploader-item .fileuploader-item-image.fileuploader-loading:after {
+        top: 50%;
+        left: 50%;
+        width: 30px;
+        height: 30px;
+        margin-left: -15px;
+        margin-top: -15px;
+        opacity: 0.2;
+    }
+
+    .fileuploader-items-list .actions-holder {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 4px;
+        background: rgba(33, 33, 33, 0.55);
+        text-align: right;
+        -webkit-transition: opacity 0.2s ease;
+        transition: opacity 0.2s ease;
+        opacity: 0;
+        z-index: 3;
+    }
+
+    .fileuploader-items-list .fileuploader-item:hover .actions-holder {
+        opacity: 1;
+    }
+
+    .fileuploader-action {
+        background: none;
+        border: 0;
+        width: 24px;
+        height: 24px;
+        margin: 3px 3px 0 0;
+        z-index: 2;
+    }
+
+    .fileuploader-action-remove i:before,
+    .fileuploader-action-remove i:after {
+        top: 4px;
+        left: 10px;
+        height: 14px;
+        width: 3px;
+        background: #fff;
+    }
+
+    .fileuploader-action-sort i {
+        top: 10px;
+        width: 12px;
+    }
+
+    .fileuploader-action-sort i:before {
+        top: -4px;
+    }
+
+    .fileuploader-action-sort i:after {
+        top: 4px;
+    }
+
+    .fileuploader-action-popup {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        z-index: 1;
+    }
+
+    .fileuploader-item.upload-failed {
+        background: none;
+    }
+
+    .fileuploader-items-list .fileuploader-item.upload-failed .fileuploader-item-icon {
+        display: block !important;
+        background: #db6868 !important;
+        color: #fff;
+    }
+
+    .fileuploader-item.upload-pending .fileuploader-action-remove:after {
+        right: 0;
+        margin-top: -14px;
+    }
+
+    .fileuploader-item .progress-holder {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .fileuploader-item .progress-holder .fileuploader-progressbar {
+        position: relative;
+        top: 50%;
+        width: 80%;
+        height: 6px;
+        margin: 0 auto;
+        background: #dde4f6;
+    }
+
+    .fileuploader-item.sorting {
+        -webkit-animation: none;
+        animation: none;
+    }
+
+    .fileuploader-sorter-placeholder {
+        background: none;
+    }
+
+    .fileuploader-sorter-placeholder div {
+        background: #fff;
+    }
+}

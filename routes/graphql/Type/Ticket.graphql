@@ -1,0 +1,11 @@
+type Ticket {
+    id: ID!
+    email: String!
+    title: String!
+    content: String!
+    slug: String!
+    status: Int!
+    user: User @belongsTo
+    created_at: DateTime!
+    updated_at: DateTime!
+}

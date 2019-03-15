@@ -1,0 +1,7 @@
+# Query the user has confirmed their email.
+#import "../_fragments/userDetails.gql"
+query confirmEmail ( $token: String! ){
+    confirmUserEmail (token: $token) {
+       ...userDetails
+    }
+}

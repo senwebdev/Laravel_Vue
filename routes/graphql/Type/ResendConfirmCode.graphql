@@ -1,0 +1,5 @@
+# Resend Confirmation type.
+type ResendConfirmation {
+    status: String!
+    message: String!
+}

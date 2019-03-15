@@ -1,0 +1,7 @@
+# Query the user data
+#import "../_fragments/userDetails.gql"
+query {
+    me {
+       ...userDetails
+    }
+}

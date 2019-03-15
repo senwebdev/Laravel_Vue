@@ -1,0 +1,114 @@
+/*! dashboard.scss | Bulkit | CSS Ninja */
+
+/* ==========================================================================
+Dashboard core file 
+========================================================================== */
+
+/***
+TABLE OF CONTENTS
+=============================================================================
+0. CSS Imports
+1. Resets and base setup
+=============================================================================
+***/
+
+/* ==========================================================================
+0. CSS Imports
+========================================================================== */
+
+@import "partials/colors";
+@import "partials/dashboard";
+@import "partials/pageloader";
+@import "partials/tabs";
+@import "partials/dropdowns";
+@import "partials/buttons";
+@import "partials/animations";
+@import "partials/cards";
+@import "partials/forms";
+@import "partials/accordion";
+@import "partials/dialogs";
+@import "partials/labels";
+@import "partials/lists";
+@import "partials/tables";
+@import "partials/messages";
+@import "partials/dashboard-layout";
+@import "partials/dashboard-sidebar";
+@import "partials/dashboard-navbar";
+@import "partials/dashboard-right-sidebar";
+@import "partials/dashboard-feed";
+@import "partials/dashboard-widgets";
+@import "partials/dashboard-charts";
+@import "partials/dashboard-documents";
+@import "partials/dashboard-projects";
+@import "partials/dashboard-contacts";
+@import "partials/dashboard-kanban";
+@import "partials/dashboard-deal";
+@import "partials/dashboard-forum";
+@import "partials/dashboard-support";
+@import "partials/dashboard-datatables";
+@import "partials/dashboard-utils";
+@import "partials/helpers";
+@import "partials/quickview";
+@import "partials/timeline";
+@import "partials/switch";
+@import "partials/extensions-checkboxes";
+@import "partials/dashboard-responsive";
+
+/* ==========================================================================
+1. Resets and base setup
+========================================================================== */
+
+.no-touch .scrollable.hover {
+    overflow-y: hidden;
+}
+
+.no-touch .scrollable.hover:hover {
+    overflow-y: auto;
+    overflow: visible;
+}
+
+a {
+    color: $secondary;
+
+    &:hover {
+        color: $accent;
+        text-decoration: none;
+    }
+
+    &:focus {
+        text-decoration: none;
+    }
+}
+
+nav {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+nav ul, nav li {
+    outline: 0;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    overflow: hidden !important;
+    background-color: $dashboard-grey;
+    margin: 0 !important;
+    height: 100% !important;
+}
+
+@font-face {
+    font-family: 'Nexa Light';
+    src: url("../fonts/text/nexa/NexaLight.woff") format("woff"), url("../fonts/text/nexa/NexaLight.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Nexa Bold';
+    font-weight: bold;
+    src: url("../fonts/text/nexa/NexaBold.woff") format("woff"), url("../fonts/text/nexa/NexaBold.ttf") format("truetype");
+}

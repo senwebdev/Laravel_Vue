@@ -1,0 +1,26 @@
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+@import url(https://fonts.googleapis.com/css?family=Cabin:400,700);
+@import url(https://fonts.googleapis.com/css?family=Montserrat:900);
+
+// Font Awesome
+@import "~font-awesome/scss/font-awesome";
+
+// Icons
+@import "../../public/css/icons.min.css";
+
+// Error pages
+@import "css/error";
+
+// Bulma
+@import "~bulma";
+
+// Agency Bulma
+@import "bulkit";
+
+.navbar.has-shadow {
+    padding-top: 10px;
+}
+.notification-margin {
+    margin-bottom: 60px !important;
+}

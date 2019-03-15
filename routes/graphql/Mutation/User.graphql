@@ -1,0 +1,23 @@
+# Mutations for the user.
+extend type Mutation {
+    createUser(
+        name: String @rules(apply: ["required"])
+        email: String @rules(apply: ["required", "email", "unique:users,email"])
+        password: String! @rules(apply: ["required", "min:6"]) @bcrypt
+    ): User @create(model: "App\\Models\\User")
+            @event(fire: "App\\Events\\User\\Created")
+    updateUser(
+        id: ID! @rules(apply: ["required"])
+        name: String
+        email: String @rules(apply: ["email"])
+    ): User @update(model: "App\\Models\\User")
+            @event(fire: "App\\Events\\User\\Updated")
+    deleteUser(
+        id: ID! @rules(apply: ["required"])
+    ): User @delete(model: "App\\Models\\User")
+            @event(fire: "App\\Events\\User\\Deleted")
+    resendConfirmationCode(
+        email: String @rules(apply: ["required", "email"])
+    ): ResendConfirmation! @field(resolver: "App\\Http\\GraphQL\\Mutations\\ResendConfirmEmail@resolve")
+
+}

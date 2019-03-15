@@ -1,0 +1,302 @@
+/*! _dashboard-responsive.scss | Bulkit | CSS Ninja */
+
+/* ==========================================================================
+Dashboard responsive styles
+========================================================================== */
+
+/***
+TABLE OF CONTENTS
+=============================================================================
+0. Mobile
+1. Portrait Tablet
+2. Landscape Tablet
+=============================================================================
+***/
+
+/* ==========================================================================
+0. Mobile
+========================================================================== */
+
+//Mobile media queries
+@media (max-width: 767px) {
+    //navbar
+
+    .search-icon {
+        margin-left: auto !important;
+    }
+
+    .chat-button {
+        margin-left: 15px !important;
+
+        i {
+            margin-left: 5px !important;
+        }
+    }
+
+    //Mobile Layout
+    .main-menu {
+        width: 60px;
+    }
+
+    .child-menu {
+        left: 60px;
+    }
+
+    nav.dashboard-nav {
+        margin-left: 60px;
+        max-width: calc(100% - 60px);
+
+        .navbar-subnav {
+            display: none !important;
+        }
+    }
+
+    #dashboard-wrapper {
+        margin-left: 60px;
+        width: calc(100% - 60px);
+    }
+
+    .dashboard-wrapper {
+        padding: 60px 6px 0 6px;
+    }
+
+    .fab {
+        left: 6px !important;
+    }
+
+    .profile-container .inner {
+        margin-left: 60px;
+
+        .flex-card .card-body {
+            padding: 10px 10px;
+        }
+    }
+
+    //Profile overlay & content
+    .profile-heading {
+        text-align: center;
+
+        .avatar {
+            max-height: 90px;
+            max-width: 90px;
+        }
+    }
+
+    //profile card
+    #profile-view, #edit-view, #profile-notifications, #profile-team {
+        padding: 0.75rem 1rem;
+
+        .flex-card.is-top {
+            margin-top: 0 !important;
+        }
+    }
+
+    //profile notifications
+    .notifications-center {
+        li {
+            margin-bottom: 10px;
+
+            .description {
+                margin-right: 0;
+            }
+        }
+    }
+
+    //Quickview
+    .quickview.is-active {
+        min-width: 100%;
+        z-index: 1001;
+
+        .user-list {
+            max-height: 346px !important;
+        }
+    }
+
+    .chat-quickview.is-active {
+        min-width: 100%;
+        z-index: 1002 !important;
+    }
+
+    footer {
+        margin-left: 60px !important;
+    }
+
+    // Reader mode (only mobile)
+    body.reader-mode {
+        .main-menu {
+            transform: translateX(-60px);
+        }
+
+        .child-menu {
+            transform: translateX(-311px);
+        }
+
+        nav.dashboard-nav {
+            margin-left: 0;
+            max-width: 100%;
+        }
+
+        #dashboard-wrapper {
+            margin-left: 0;
+            width: 100%;
+        }
+
+        footer {
+            margin-left: 0 !important;
+        }
+    }
+
+    //cards
+    .card-body {
+        &.is-responsive {
+            padding: 10px !important;
+        }
+    }
+
+    //Typography
+    .responsive-title {
+        font-size: 1.35rem !important;
+    }
+
+    //Invoice
+    .is-invoice {
+        padding: 40px 20px !important;
+    }
+
+    //Contact tabs
+    .is-contact-info .single-contact-tabs {
+        padding: 20px 16px 40px 16px !important;
+
+        .navtab-content {
+            padding: 16px 0 0 0 !important;
+        }
+
+        .lifetime-won {
+            width: 80% !important;
+        }
+    }
+
+    //Kanban
+    .board {
+        max-width: 100% !important;
+    }
+
+    //Boards
+    .boards-grid {
+        .board-meta {
+            flex-direction: column;
+
+            label {
+                margin-bottom: 20px !important;
+            }
+
+            .board-assignees {
+                width: 100% !important;
+            }
+        }
+    }
+}
+
+/* ==========================================================================
+1. Portrait Tablet
+========================================================================== */
+
+//repositionning chat quickview button on tablets with portrait orientation
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+    .chat-button {
+        margin-left: auto !important;
+    }
+
+    //Reader switch
+    .reader-switch {
+        display: none !important;
+    }
+
+    //Mobile Nav
+    .mobile-nav {
+        margin-left: 80px !important;
+        width: 100%;
+        max-width: calc(100% - 80px) !important;
+    }
+
+    //Kanban
+    .board {
+        max-width: 100% !important;
+    }
+}
+
+/* ==========================================================================
+2. Landscape Tablet
+========================================================================== */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+    .dashboard-wrapper {
+        margin-left: 0 !important;
+
+        .section-wrapper {
+            max-width: 911px !important;
+        }
+    }
+
+    //Mobile Nav
+    .mobile-nav {
+        margin-left: 80px !important;
+        width: 100%;
+        max-width: calc(100% - 80px) !important;
+    }
+
+    //Kanban
+    .board, .is-create-board {
+        max-width: 235px !important;
+
+        .placeholder-image {
+            max-width: 145px !important;
+        }
+
+        .assignees img {
+            height: 32px !important;
+            width: 32px !important;
+        }
+    }
+
+    //Boards
+    .boards-grid {
+        .column.is-4 {
+            width: 50% !important;
+        }
+
+        .board-meta {
+            flex-direction: column;
+
+            label {
+                margin-bottom: 20px !important;
+            }
+
+            .board-assignees {
+                width: 100% !important;
+            }
+        }
+
+        .footer-block {
+            height: 65px !important;
+        }
+    }
+}
+
+/* ==========================================================================
+3. Desktop screens
+========================================================================== */
+
+@media only screen and (min-device-width: 1025px) {
+    .dashboard-wrapper {
+        margin-left: 0 !important;
+
+        .section-wrapper {
+            max-width: 1406px !important;
+        }
+    }
+
+    .board {
+        max-width: 352px !important;
+    }
+}

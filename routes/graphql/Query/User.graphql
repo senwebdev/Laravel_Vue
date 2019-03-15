@@ -1,0 +1,6 @@
+extend type Query {
+    user(id: ID @eq): User @find(model: "App\\Models\\User")
+    users: [User!]! @paginate(type: "paginator" model: "App\\Models\\User")
+    confirmUserEmail( token: String! ): User! @field(resolver: "App\\Http\\GraphQL\\Queries\\ConfirmUserEmail@resolve")
+    newestUser: User!
+}

@@ -1,0 +1,7 @@
+# Mutation to register the new user.
+mutation userRegister ($name: String!, $email: String!, $password: String!) {
+  createUser ( name: $name, email: $email, password: $password ) {
+   id
+   name
+  }
+}

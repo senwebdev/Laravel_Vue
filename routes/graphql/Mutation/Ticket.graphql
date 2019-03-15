@@ -1,0 +1,16 @@
+extend type Mutation {
+    createTicket(
+        email: String @rules(apply: ["email"])
+        title: String
+        content: String
+    ): Ticket @create (model: "App\\Models\\Ticket")
+    updateTicket(
+        id: ID! @rules(apply: ["required"])
+        title: String
+        content: String
+        status: Int
+    ): Ticket @update (model: "App\\Models\\Ticket")
+    deleteTicket(
+        id: ID! @rules(apply: ["required"])
+    ): Ticket @delete (model: "App\\Models\\Ticket")
+}

@@ -1,0 +1,4 @@
+type Application {
+    name: String!
+    url: String!
+}

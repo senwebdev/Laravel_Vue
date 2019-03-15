@@ -1,0 +1,9 @@
+# Mutation to log the user into the system.
+mutation userLogin ($username: String!, $password: String!) {
+  login ( data: { username: $username, password: $password}) {
+    access_token
+    refresh_token
+    expires_in
+    token_type
+  }
+}
